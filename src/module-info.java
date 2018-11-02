@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author andres
+ *
+ */
+module Solitario {
+}
