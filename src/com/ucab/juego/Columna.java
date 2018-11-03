@@ -11,7 +11,6 @@ public class Columna {
 		// crea una nueva columna de cartas con 0 cartas 
  	public Columna() {
  		this.cantidad=0;
-		this.cartas[0]= new carta(1);// este codigo es de prueba agrega una carta nueva en la columna 
 		}
 
 	// calcula la ultima posicion disponible en la columna 
@@ -29,25 +28,28 @@ public class Columna {
 	}
 
 		//agrega carta y edita el score de la columna ppar ser leido desde el main
-		// siempre se debe inizializar las 4 columans desde el main con el metodo setUltimoscore
- 	public void agregarCarta(int x,int multiplicador) {
+ 	public boolean agregarCarta(int x,int multiplicador) {
  		this.cartas[this.cantidad]= new carta(x);
- 		setUltimoscore();// esta aqui repetido porque no he creado el main completo 
- 		organizar(this.cantidad-1,1,multiplicador);
+ 		setUltimoscore();
+ 		boolean a = organizar(this.cantidad-1,1,multiplicador);
  		this.cantidad=ultimo();
  		this.ultima=this.cartas[this.cantidad-1].getNumero();
+ 		return a;
  	}
  
  	// organiza repeticiones de las cartas y calcula el scor resultante de la suma y lo guarde en la propiedad ultimoscore 
-	private void organizar(int u,int v,int m) {
+	private boolean organizar(int u,int v,int m) {
 		if(u!=0) {
 			if(this.cartas[u].getNumero()==this.cartas[u-1].getNumero()) {
 				this.cartas[u]=null;
 				this.cartas[u-1].incrementar();
 				this.ultimoscore+=v*(this.cartas[u-1].valor())*m;
-				organizar(u-1,v++,m);
+				if (this.cartas[u-1].getNumero()==11)
+					return true;
+				return organizar(u-1,v++,m);
 			}
 		}
+	return false;
 	}
 
 	public int getUltimoscore() {
