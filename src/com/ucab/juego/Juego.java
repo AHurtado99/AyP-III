@@ -61,7 +61,7 @@ public class Juego {
 	public static void main(String[] args) {
 		Juego partida =new Juego();
 		Scanner sc=new Scanner(System.in);
-		int x=0;
+		int x=1;
 		int[] y= new int[2];
 		y[1]= (int) (Math.random()*6)+1;
 		y[0]= (int) (Math.random()*6)+1;
@@ -79,6 +79,14 @@ public class Juego {
 				j++;
 			}
 			System.out.println("		Cartas: "+(int) (Math.pow(2,y[1]))+" '"+(int) (Math.pow(2,y[0]))+"'");
+			if(partida.comodines[1]>39)
+				System.out.println("		5. Botar la carta ->Activo");
+			else
+				System.out.println("		5. Botar la carta ->Inactivo Faltan "+(int)(40-partida.comodines[1])+" Jugadas");
+			if(partida.comodines[2]>39)
+				System.out.println("		6. Botar la carta ->Activo");
+			else
+				System.out.println("		6. Botar la carta ->Inactivo Faltan "+(int)(40-partida.comodines[2])+" Jugadas");
 			x= sc.nextInt();
 			if(x>0 && x<5) {
 				if(partida.Columnas[x].cantidad<8 || partida.Columnas[x].ultima==y[0]) {
@@ -86,6 +94,18 @@ public class Juego {
 					y[0]=y[1];
 					y[1]= (int) (Math.random()*6)+1;
 				}else System.out.println("Liena llena");
+			}
+			if(x==5) {
+				partida.AumentarComodines();
+				partida.comodines[1]=0;
+				y[0]=y[1];
+				y[1]= (int) (Math.random()*6)+1;
+			}
+			if(x==6) {
+				partida.AumentarComodines();
+				partida.comodines[2]=0;
+				y[0]=y[1];
+				y[1]= (int) (Math.random()*6)+1;
 			}
 		}
 		System.out.println("Bye...");
