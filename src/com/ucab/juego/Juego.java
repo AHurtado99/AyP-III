@@ -10,7 +10,8 @@ public class Juego {
 	int multiplicador;
 	int score;
 	int[] comodines = new int[3];
-	
+	 
+	//constructor
 	public Juego() {
 		this.record =1/*cargar record del json */;
 		this.multiplicador = 1 /*cargar multiplicador del json */ ;
@@ -28,6 +29,7 @@ public class Juego {
 		//}
 	}
 	
+	// Agrega cartas en una determinada columna y de un deerminado indice de carta
 	public void AgregarCarta(int Columna,int Carta) {
 		boolean a =this.Columnas[Columna].agregarCarta(Carta, this.multiplicador);
 		this.score+=this.Columnas[Columna].getUltimoscore();
@@ -41,31 +43,50 @@ public class Juego {
 		this.AumentarComodines();
 	}
 	
+	//aumenta los comodines por cada jugada 
 	public void AumentarComodines() {
 		comodines[0]++;
 		comodines[1]++;
 		comodines[2]++;
 	}
 	
+	public boolean Posiblejugada(int x) {
+		if(this.Columnas[1].cantidad==8 && this.Columnas[2].cantidad==8 && this.Columnas[3].cantidad==8 && this.Columnas[4].cantidad==8) {
+			if(this.Columnas[1].ultima!=x && this.Columnas[2].ultima!=x && this.Columnas[3].ultima!=x && this.Columnas[4].ultima!=x)
+				return false;
+		}
+		return true;
+	}
+	
 	public static void main(String[] args) {
 		Juego partida =new Juego();
 		Scanner sc=new Scanner(System.in);
-		int x=1,y=0;
-		while(x!=0) {
-			int j=1;System.out.print(" "+partida.record+"  "+partida.score+"  "+partida.multiplicador);
+		int x=0;
+		int[] y= new int[2];
+		y[1]= (int) (Math.random()*6)+1;
+		y[0]= (int) (Math.random()*6)+1;
+		while(x!=0 && partida.Posiblejugada(y[0])){
+			int j=1;System.out.println("		Record:"+partida.record+"	Score:"+partida.score+"		X"+partida.multiplicador);
 			while(j<5) {
 				int i=0;
-				System.out.println("	");
-				System.out.print(partida.Columnas[j].cantidad+"		");
+				System.out.println("Columna "+j);
+				System.out.print(partida.Columnas[j].cantidad+"  -> ");
 				while(partida.Columnas[j].cartas[i]!=null){
-					System.out.print(partida.Columnas[j].cartas[i].getNumero()+"/");
+					System.out.print(partida.Columnas[j].cartas[i].valor()+"/");
 					i++;
 				}
+				System.out.println("		");
 				j++;
 			}
+			System.out.println("		Cartas: "+(int) (Math.pow(2,y[1]))+" '"+(int) (Math.pow(2,y[0]))+"'");
 			x= sc.nextInt();
-			y= sc.nextInt();
-			partida.AgregarCarta(x, y);
+			if(x>0 && x<5) {
+				if(partida.Columnas[x].cantidad<8 || partida.Columnas[x].ultima==y[0]) {
+					partida.AgregarCarta(x, y[0]);
+					y[0]=y[1];
+					y[1]= (int) (Math.random()*6)+1;
+				}else System.out.println("Liena llena");
+			}
 		}
 		System.out.println("Bye...");
 		sc.next();

@@ -43,7 +43,6 @@ public class Columna {
 			if(this.cartas[u].getNumero()==this.cartas[u-1].getNumero()) {
 				this.cartas[u]=null;
 				this.cartas[u-1].incrementar();
-				System.out.print("'Primera suma'");
 				this.ultimoscore+=v*(this.cartas[u-1].valor())*m;
 				if (this.cartas[u-1].getNumero()==11)
 					return true;
