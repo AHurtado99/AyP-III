@@ -4,7 +4,7 @@ import com.ucab.juego.carta;
 
 public class Columna {
 
-	carta[] cartas ;
+	carta[] cartas =new carta[10];
 	int cantidad, ultima;
 	private int ultimoscore;
 
@@ -30,8 +30,8 @@ public class Columna {
 		//agrega carta y edita el score de la columna ppar ser leido desde el main
  	public boolean agregarCarta(int x,int multiplicador) {
  		this.cartas[this.cantidad]= new carta(x);
- 		setUltimoscore();
- 		boolean a = organizar(this.cantidad-1,1,multiplicador);
+ 		this.setUltimoscore();
+ 		boolean a = organizar(this.cantidad,1,multiplicador);
  		this.cantidad=ultimo();
  		this.ultima=this.cartas[this.cantidad-1].getNumero();
  		return a;
@@ -39,10 +39,11 @@ public class Columna {
  
  	// organiza repeticiones de las cartas y calcula el scor resultante de la suma y lo guarde en la propiedad ultimoscore 
 	private boolean organizar(int u,int v,int m) {
-		if(u!=0) {
+		if(u>0) {
 			if(this.cartas[u].getNumero()==this.cartas[u-1].getNumero()) {
 				this.cartas[u]=null;
 				this.cartas[u-1].incrementar();
+				System.out.print("'Primera suma'");
 				this.ultimoscore+=v*(this.cartas[u-1].valor())*m;
 				if (this.cartas[u-1].getNumero()==11)
 					return true;
