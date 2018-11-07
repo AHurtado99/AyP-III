@@ -95,7 +95,7 @@ public class Juego {
 				if(partida.Columnas[x].cantidad<8 || partida.Columnas[x].ultima==y[0]) {
 					partida.AgregarCarta(x, y[0]);
 					y[0]=y[1];
-					y[1]= (int) (Math.random()*6)+1;
+					y[1]= (int) (Math.random()*6)+4;
 				}else System.out.println("Liena llena");
 			}
 			if(x==5) {
