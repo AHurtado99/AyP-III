@@ -6,4 +6,5 @@
  *
  */
 module Solitario {
+	requires java.desktop;
 }

@@ -10,6 +10,7 @@ public class Juego {
 	int multiplicador;
 	int score;
 	int[] comodines = new int[3];
+	carta[] newcartas= new carta[2];
 	 
 	//constructor
 	public Juego() {
@@ -23,9 +24,11 @@ public class Juego {
 		this.Columnas[3] = new Columna();
 		this.Columnas[4] = new Columna();
 		this.score=0;
-		comodines[0]=40;
-		comodines[1]=40;
-		comodines[2]=40;
+		this.comodines[0]=40;
+		this.comodines[1]=40;
+		this.comodines[2]=40;
+		this.newcartas[0]= new carta((int) (Math.random()*6)+1);
+		this.newcartas[1]= new carta((int) (Math.random()*6)+1);
 		//}
 	}
 	
@@ -45,9 +48,9 @@ public class Juego {
 	
 	//aumenta los comodines por cada jugada 
 	public void AumentarComodines() {
-		comodines[0]++;
-		comodines[1]++;
-		comodines[2]++;
+		this.comodines[0]++;
+		this.comodines[1]++;
+		this.comodines[2]++;
 	}
 	
 	public boolean Posiblejugada(int x) {
