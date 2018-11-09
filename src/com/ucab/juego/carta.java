@@ -19,7 +19,7 @@ public class carta {
 			case 8 : this.color = "#0B610B"; break;
 			case 9 : this.color = "#6A0888"; break;
 			case 10: this.color = "#2EFEF7"; break;
-			case 11: this.color = "#848484"; break;
+			default: this.color = "#848484"; break;
 		}
 	}
 	

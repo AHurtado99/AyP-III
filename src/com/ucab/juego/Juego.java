@@ -15,7 +15,7 @@ public class Juego {
 	//constructor
 	public Juego() {
 		this.record =1/*cargar record del json */;
-		this.multiplicador = 1 /*cargar multiplicador del json */ ;
+		this.multiplicador = 0/*cargar multiplicador del json */ ;
 		/*if(false /*validar si ya existe una partida jugada){
 			//carga de partida anterior, necesita json
 		}else {*/
