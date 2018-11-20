@@ -1,10 +1,10 @@
 package com.ucab.juego;
 
-import com.ucab.juego.carta;
+import com.ucab.juego.Carta;
 
 public class Columna {
 
-	carta[] cartas =new carta[10];
+	Carta[] cartas =new Carta[9];
 	int cantidad, ultima;
 	private int ultimoscore;
 
@@ -29,7 +29,7 @@ public class Columna {
 
 		//agrega carta y edita el score de la columna ppar ser leido desde el main
  	public boolean agregarCarta(int x,int multiplicador) {
- 		this.cartas[this.cantidad]= new carta(x);
+ 		this.cartas[this.cantidad]= new Carta(x);
  		this.setUltimoscore();
  		boolean a = organizar(this.cantidad,1,multiplicador);
  		this.cantidad=ultimo();
