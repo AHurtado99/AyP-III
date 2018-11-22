@@ -41,7 +41,6 @@
 			frame.getContentPane().setLayout(null);
 			
 			partida = new Juego();
-	
 			partida.Columnas[1].agregarCarta(1, 1);
 			partida.Columnas[2].agregarCarta(1, 1);
 			partida.Columnas[3].agregarCarta(1, 1);
@@ -50,7 +49,6 @@
 			partida.Columnas[2].agregarCarta(10, 1);
 			partida.Columnas[3].agregarCarta(10, 1);
 			partida.Columnas[4].agregarCarta(10, 1);
-			
 			Imprimir();
 		}
 	
@@ -107,7 +105,7 @@
 			lblScore.setFont(new Font("Tahoma", Font.PLAIN, 35));
 			lblScore.setHorizontalAlignment(SwingConstants.CENTER);
 			lblScore.setVerticalAlignment(SwingConstants.CENTER);
-			lblScore.setBounds(25, 10, 425, 47);
+			lblScore.setBounds(25, 10, 475, 47);
 			frame.getContentPane().add(lblScore);
 	
 			btnCorona.setBounds(15, 9, 35, 33);
@@ -123,7 +121,8 @@
 			frame.getContentPane().add(lblRecord);
 	
 			btnLinea.setBounds(0, 501, 535, 18);
-			btnLinea.setIcon(new ImageIcon("src/Imagenes/linea.png"));
+			btnLinea.setIcon(new ImageIcon("src/Imagenes/Linea.png"));
+			btnLinea.setBackground(Color.WHITE);
 			btnLinea.setBorderPainted(false);
 			frame.getContentPane().add(btnLinea);
 			
@@ -281,7 +280,10 @@
 							i++;
 						}
 						frame.repaint();
-					}else {frame.addNotify();
+					}else {
+						if(!partida.Posiblejugada()) {
+							frame.removeAll();
+						}
 					}
 				}
 			});
@@ -329,7 +331,10 @@
 							i++;
 						}
 						frame.repaint();
-					}else {frame.addNotify();
+					}else {
+						if(!partida.Posiblejugada()) {
+							frame.removeAll();
+						}
 					}
 				}
 			});
@@ -377,7 +382,10 @@
 							i++;
 						}
 						frame.repaint();
-					}else {frame.addNotify();
+					}else {
+						if(!partida.Posiblejugada()) {
+							frame.removeAll();
+						}
 					}
 				}
 			});
@@ -426,7 +434,9 @@
 						}
 						frame.repaint();
 					}else {
-						frame.addNotify();
+						if(!partida.Posiblejugada()) {
+							frame.removeAll();
+						}
 					}
 				}
 			});
