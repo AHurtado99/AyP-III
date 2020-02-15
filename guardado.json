@@ -1,0 +1,15 @@
+{
+	"columnas": [
+		"columna1": [
+			{"numero":4},
+			{"numero":3}
+		],
+		"columna2": [
+			{"numero":3},
+			{"numero":2}
+		],
+	]
+
+	"score":1400,
+	"multiplicador":3
+}
